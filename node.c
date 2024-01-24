@@ -469,8 +469,8 @@ void score_nodes(unsigned char *seq, unsigned char *rseq, int slen,
     if(nod[i].edge == 0 && edge_gene == 1) 
       nod[i].uscore -= 0.5*EDGE_BONUS*tinf->st_wt;
 
-    /* Penalize non-edge genes < 250bp */
-    const unsigned SHORT_CDS = 100;
+    /* Penalize non-edge genes < 30bp */
+    const unsigned SHORT_CDS = 30;
     if(edge_gene == 0 && abs(nod[i].ndx-nod[i].stop_val) < SHORT_CDS) {
       negf = (float)SHORT_CDS/(float)abs(nod[i].ndx-nod[i].stop_val);
       posf = (float)abs(nod[i].ndx-nod[i].stop_val)/(float)SHORT_CDS;
